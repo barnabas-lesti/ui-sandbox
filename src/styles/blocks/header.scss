@@ -1,0 +1,27 @@
+@import '../variables';
+
+.header {
+  background-color: grey;
+
+  a {
+    color: #ffffff;
+    font-weight: bold;
+
+    &:hover {
+      color: #e2e2e2;
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+
+    li {
+      display: inline-block;
+      list-style-type: none;
+      padding: 4px;
+    }
+  }
+}
+
