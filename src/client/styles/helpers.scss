@@ -3,8 +3,27 @@
 }
 
 .threeInARow {
-	@media screen and (min-width: $breakpoint_mdMin) {
+	@media screen and (min-width: $layout_mdMin) {
 		@include threeInARow;
 	}
 }
 
+.noScroll {
+	overflow: hidden;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.hiddenSm {
+	@media screen and (max-width: $layout_smMax) {
+		display: none !important;
+	}
+}
+
+.container {
+	margin: 0 auto;
+	max-width: $layout_contentMaxWidth;
+	padding: 0 1rem;
+}

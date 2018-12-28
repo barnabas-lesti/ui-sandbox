@@ -1,3 +1,1 @@
-// import './header';
-
-console.log('Scripts loaded');
+import './modules/header';
