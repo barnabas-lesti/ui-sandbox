@@ -4,6 +4,8 @@ rules:
   no-important: 0
   variable-name-format: 0
   placeholder-name-format: 0
+  no-url-domains: 0
+  no-url-protocols: 0
   indentation:
     - 2
     - size: tab

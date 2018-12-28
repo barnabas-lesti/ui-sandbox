@@ -1,0 +1,10 @@
+.clearfix {
+	@include clearfix;
+}
+
+.threeInARow {
+	@media screen and (min-width: $breakpoint_mdMin) {
+		@include threeInARow;
+	}
+}
+

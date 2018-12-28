@@ -1,3 +1,51 @@
 .footer {
+	$_bgColor: #ffffff;
 
+	background-color: $_bgColor;
+	text-align: center;
+
+	&_links {
+		list-style-type: none;
+		margin: 0;
+		padding: 1rem 0;
+
+		li {
+			padding: .5rem 1rem;
+		}
+	}
+
+	&_social {
+		margin: 1rem 0;
+
+		a {
+			display: inline-block;
+			margin: 0 1rem;
+		}
+
+		img {
+			width: 3rem;
+		}
+	}
+
+	@media screen and (min-width: $breakpoint_mdMin) {
+		text-align: left;
+
+		&_social {
+			a {
+				margin: 0 1rem 0 0;
+			}
+
+			img {
+				width: 2rem;
+			}
+		}
+
+		&_apps {
+			a {
+				display: block;
+				margin-bottom: .5rem;
+			}
+		}
+	}
 }
+
