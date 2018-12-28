@@ -1,0 +1,52 @@
+.aboveTheFold {
+	$_textColor: #ffffff;
+	$_overlayColor: rgba(0, 0, 0, .5);
+
+	background-image: url('/assets/images/home-hero.jpg');
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: cover;
+	box-sizing: border-box;
+	margin: 0 -1rem;
+	min-height: 80vh;
+	position: relative;
+	text-align: center;
+	width: calc(100% + 2rem);
+
+	h1 {
+		color: $_textColor;
+		left: 50%;
+		margin: 0;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 80%;
+		z-index: 300;
+	}
+
+	&_overlay {
+		background-color: $_overlayColor;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 200;
+	}
+
+	&_video {
+		display: none;
+	}
+
+	@media screen and (min-width: $layout_mdMin) {
+		&_video {
+			display: block;
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: auto;
+			z-index: 100;
+		}
+	}
+}
