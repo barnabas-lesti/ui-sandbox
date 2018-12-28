@@ -5,6 +5,7 @@ const path = require('path');
 
 const { config, logger } = require('./common');
 const routes = require('./routes');
+const viewHelpers = require('./views/helpers');
 
 const app = express();
 logger.info(`Using config: ${ config.common.ENV }`);
@@ -14,6 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('hbs', expressHandlebars({
 	defaultLayout: 'default',
 	extname: '.hbs',
+	helpers: viewHelpers,
 	layoutsDir: path.join(__dirname, 'views/layout'),
 	partialsDir: path.join(__dirname, 'views/partials'),
 }));

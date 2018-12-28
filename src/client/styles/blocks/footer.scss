@@ -1,7 +1,9 @@
 .footer {
 	$_bgColor: #ffffff;
+	$_boxShadow: rgba(5, 45, 73, .07) 0 -2px 0 0;
 
 	background-color: $_bgColor;
+	box-shadow: $_boxShadow;
 	text-align: center;
 
 	&_links {
@@ -27,7 +29,7 @@
 		}
 	}
 
-	@media screen and (min-width: $breakpoint_mdMin) {
+	@media screen and (min-width: $layout_mdMin) {
 		text-align: left;
 
 		&_social {

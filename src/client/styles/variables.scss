@@ -1,4 +1,7 @@
-$breakpoint_mdMin: 501px;
+
+$layout_contentMaxWidth: 800px;
+$layout_smMax: 500px;
+$layout_mdMin: $layout_smMax + 1px;
 
 $color_link: #052d49;
 $color_link-hover: #06395e;
