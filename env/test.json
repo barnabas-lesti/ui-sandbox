@@ -1,0 +1,6 @@
+{
+	"common": {
+		"ENV": "test",
+		"PORT": 7000
+	}
+}

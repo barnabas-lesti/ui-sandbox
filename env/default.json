@@ -1,0 +1,6 @@
+{
+	"common": {
+		"ENV": "default",
+		"PORT": 8080
+	}
+}

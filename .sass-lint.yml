@@ -6,6 +6,7 @@ rules:
   placeholder-name-format: 0
   indentation:
     - 2
+    - size: tab
   hex-length:
     - 2
     - style: long
