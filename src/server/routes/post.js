@@ -1,20 +1,23 @@
-function home (router) {
-	router.route('/:postGroup/:postId')
-		.get((req, res) => {
-			const {
-				postGroup,
-				postId,
-			} = req.params;
+const { postService } = require('../services');
 
-			res.render('post', {
-				model: {
-					postGroup,
-					postId,
-				},
-			});
+function post (router) {
+	router.route('/:postGroup/:postId')
+		.get(async (req, res) => {
+			const { postGroup, postId } = req.params;
+			const post = await postService.getPost(postGroup, postId);
+
+			if (post !== null) {
+				const { content, ...meta } = post;
+				res.render('post', {
+					content,
+					meta,
+				});
+			} else {
+				res.render('notFound');
+			}
 		});
 	return router;
 }
 
-module.exports = home;
+module.exports = post;
 

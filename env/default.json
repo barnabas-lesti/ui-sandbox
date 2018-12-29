@@ -2,5 +2,8 @@
 	"common": {
 		"ENV": "default",
 		"PORT": 8080
+	},
+	"dataStore": {
+		"BUCKET_PATH": "C:/Users/Barnabas_Lesti/Stuff/Work/Repo/ui-sandbox/bucket"
 	}
 }

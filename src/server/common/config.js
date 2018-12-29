@@ -15,6 +15,9 @@ const config = {
 		ENV: configLib.get('common.ENV'),
 		PORT: configLib.get('common.PORT'),
 	},
+	dataStore: {
+		BUCKET_PATH: configLib.get('dataStore.BUCKET_PATH'),
+	},
 };
 
 module.exports = config;
