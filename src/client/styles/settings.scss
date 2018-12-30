@@ -7,6 +7,10 @@ body {
 	padding: 0;
 }
 
+h1 {
+	margin-top: 0;
+}
+
 a {
 	$_color: $color_link;
 	$_color-hover: $color_link-hover;

@@ -1,5 +1,12 @@
-<h1>Posts</h1>
-
-<p>
-	Post Group: {{{ model.postGroup }}}
-</p>
+<main class="posts page container">
+	<div class="posts_content">
+		{{{ model.content }}}
+	</div>
+	{{#each model.postGroups as |postGroup key|}}
+		<a class="postCard" href="/posts/{{ postGroup.postGroup }}">
+			<h2 class="postCard_title">{{ postGroup.title }}</h2>
+			<p class="postCard_description">{{ postGroup.description }}</p>
+			<span class="postCard_cta">Check out the posts</span>
+		</a>
+	{{/each}}
+</main>

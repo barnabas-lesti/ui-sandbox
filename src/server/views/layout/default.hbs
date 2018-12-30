@@ -2,7 +2,14 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Example App</title>
+
+		<title>{{#if meta.title }}{{ meta.title }} | {{/if}}My Blog</title>
+		{{#if meta.description }}
+			<meta name="description" content="{{ meta.description }}" />
+		{{/if}}
+		{{#if meta.keywords }}
+			<meta name="keywords" content="{{ listToString meta.keywords }}" />
+		{{/if}}
 
 		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
 
