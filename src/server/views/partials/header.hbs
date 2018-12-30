@@ -1,7 +1,10 @@
 <header class="header">
-	<a class="header_logo" href="/">
-		<img src="/assets/images/logo.svg" alt="Site logo">
-	</a>
+	{{#if global.siteLogoUrl }}
+		<a class="header_logo" href="/">
+			<img src="{{ global.siteLogoUrl }}" alt="Site logo">
+		</a>
+	{{/if}}
+
 	<div class="header_icon header_icon-burger">
 		{{{ getIcon 'burger' }}}
 	</div>
@@ -10,17 +13,10 @@
 	</div>
 
 	<ul class="header_links hiddenSm">
-		<li>
-			<a href="/link1">Lorem ipsum</a>
-		</li>
-		<li>
-			<a href="/link1">Dolor</a>
-		</li>
-		<li>
-			<a href="/link1">Sit amet sum</a>
-		</li>
-		<li>
-			<a href="/link1">Exodus</a>
-		</li>
+		{{#each global.menuItems as |menuItem key|}}
+			<li>
+				<a href="{{ menuItem.path }}">{{ menuItem.label }}</a>
+			</li>
+		{{/each}}
 	</ul>
 </header>

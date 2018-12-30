@@ -2,7 +2,7 @@ const { contentService } = require('../services');
 
 function posts (router) {
 	router.route('/posts/:postGroup')
-		.get(async (req, res) => {
+		.get(async (req, res, next) => {
 			const { postGroup } = req.params;
 			const [ postGroupData, posts ] = await Promise.all([
 				contentService.getPostGroup(postGroup),
@@ -10,21 +10,23 @@ function posts (router) {
 			]);
 
 			if (postGroupData !== null && posts !== null) {
-				res.render('postGroup', {
-					meta: {
-						description: postGroupData.description,
-						keywords: postGroupData.keywords,
-						title: postGroupData.title,
+				res.locals = {
+					page: {
+						meta: {
+							description: postGroupData.description,
+							keywords: postGroupData.keywords,
+							title: postGroupData.title,
+						},
+						model: {
+							content: postGroupData.content,
+							postGroup: postGroupData.postGroup,
+							posts,
+						},
+						template: 'postGroup',
 					},
-					model: {
-						content: postGroupData.content,
-						postGroup: postGroupData.postGroup,
-						posts,
-					},
-				});
-			} else {
-				res.render('notFound');
+				};
 			}
+			next();
 		});
 	return router;
 }

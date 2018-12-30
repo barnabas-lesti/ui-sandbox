@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>{{#if meta.title }}{{ meta.title }} | {{/if}}My Blog</title>
+		<title>{{#if meta.title }}{{ meta.title }} | {{/if}}{{ global.rootTitle }}</title>
 		{{#if meta.description }}
 			<meta name="description" content="{{ meta.description }}" />
 		{{/if}}
@@ -12,7 +12,6 @@
 		{{/if}}
 
 		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
-
 		<link rel="stylesheet" type="text/css" href="/assets/bundle.css">
 		<script src="/assets/bundle.js" defer></script>
 	</head>

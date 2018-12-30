@@ -2,24 +2,26 @@ const { contentService } = require('../services');
 
 function post (router) {
 	router.route('/posts/:postGroup/:postId')
-		.get(async (req, res) => {
+		.get(async (req, res, next) => {
 			const { postGroup, postId } = req.params;
 			const post = await contentService.getPost(postGroup, postId);
 
 			if (post !== null) {
-				res.render('post', {
-					meta: {
-						description: post.description,
-						keywords: post.keywords,
-						title: post.title,
+				res.locals = {
+					page: {
+						meta: {
+							description: post.description,
+							keywords: post.keywords,
+							title: post.title,
+						},
+						model: {
+							content: post.content,
+						},
+						template: 'post',
 					},
-					model: {
-						content: post.content,
-					},
-				});
-			} else {
-				res.render('notFound');
+				};
 			}
+			next();
 		});
 	return router;
 }

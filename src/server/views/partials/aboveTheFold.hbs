@@ -1,6 +1,6 @@
-<div class="aboveTheFold" style="background-image: url('https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2012/07/Screen-Shot-2012-07-13-at-6.12.51-PM.png');">
+<div class="aboveTheFold" {{#if imageUrl }}style="background-image: url('{{ imageUrl }}');"{{/if}}>
 	<div class="aboveTheFold_content">
-		{{{ model }}}
+		{{{ content }}}
 	</div>
 	<div class="aboveTheFold_overlay"></div>
 </div>

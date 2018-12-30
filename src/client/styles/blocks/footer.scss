@@ -17,7 +17,7 @@
 	}
 
 	&_social {
-		margin: 1rem 0;
+		margin: 0 0 1rem;
 
 		a {
 			display: inline-block;
@@ -30,7 +30,19 @@
 	}
 
 	@media screen and (min-width: $layout_mdMin) {
+		padding: 2rem 0;
 		text-align: left;
+
+		&_links {
+			margin-bottom: 1rem;
+			padding: 0;
+
+			li {
+				display: inline-block;
+				margin-right: 1rem;
+				padding: 0;
+			}
+		}
 
 		&_social {
 			a {
@@ -42,11 +54,8 @@
 			}
 		}
 
-		&_apps {
-			a {
-				display: block;
-				margin-bottom: .5rem;
-			}
+		&_rights {
+			margin-bottom: 0;
 		}
 	}
 }

@@ -101,8 +101,25 @@ class ContentService {
 		}
 	}
 
+	async getSettings () {
+		const settingsJsonPath = `${ config.dataStore.BUCKET_PATH }/settings.json`;
+		try {
+			const settings = JSON.parse(await fsExtra.readFile(settingsJsonPath, 'utf-8'));
+			return settings;
+		} catch (error) {
+			if (error.code !== 'ENOENT') {
+				logger.error(error);
+			}
+			return null;
+		}
+	}
+
+	async getMenuItems () {
+		const { menuItems } = await this.getSettings();
+		return menuItems;
+	}
+
 	async _fetchDataFromBucket (path) {
-		console.log(path);
 		const [ rawMeta, mdContent ] = await Promise.all([
 			fsExtra.readFile(`${ path }.json`, 'utf-8'),
 			fsExtra.readFile(`${ path }.md`, 'utf-8'),

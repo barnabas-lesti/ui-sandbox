@@ -4,6 +4,7 @@ const expressHandlebars = require('express-handlebars');
 const path = require('path');
 
 const { config, logger } = require('./common');
+const { responder } = require('./middlewares');
 const routes = require('./routes');
 const viewHelpers = require('./views/helpers');
 
@@ -25,6 +26,7 @@ app.set('view engine', 'hbs');
 app.use('/assets', [
 	express.static('assets'),
 	express.static('build/assets'),
+	express.static(`${ config.dataStore.BUCKET_PATH }/assets`),
 ]);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -33,6 +35,8 @@ app.use(bodyParser.json());
 for (const route of routes) {
 	app.use(route(express.Router()));
 }
+
+app.use(responder());
 
 // Starting the server
 const server = app.listen(config.common.PORT, () => {
