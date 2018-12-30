@@ -32,4 +32,9 @@
 	overflow: hidden;
 	padding-bottom: 2rem;
 	padding-top: 2rem;
+	text-align: center;
+
+	@media screen and (min-width: $layout_mdMin) {
+		text-align: left;
+	}
 }

@@ -5,7 +5,7 @@ const { config, logger } = require('../common');
 
 const POSTS_PATH = `${ config.dataStore.BUCKET_PATH }/posts`;
 
-class PostService {
+class ContentService {
 	async getPost (postGroup, postId) {
 		const postDir = `${ POSTS_PATH }/${ postGroup }/${ postId }`;
 		try {
@@ -78,8 +78,21 @@ class PostService {
 
 	async getRootPostsData () {
 		try {
-			const rootPostsMeta = await this._fetchDataFromBucket(`${ POSTS_PATH }/posts`);
-			return rootPostsMeta;
+			const rootPostsData = await this._fetchDataFromBucket(`${ POSTS_PATH }/posts`);
+			return rootPostsData;
+		} catch (error) {
+			if (error.code !== 'ENOENT') {
+				logger.error(error);
+			}
+			return null;
+		}
+	}
+
+	async getHomePageData () {
+		const homeDataPath = `${ config.dataStore.BUCKET_PATH }/static/home/home`;
+		try {
+			const homePageData = await this._fetchDataFromBucket(homeDataPath);
+			return homePageData;
 		} catch (error) {
 			if (error.code !== 'ENOENT') {
 				logger.error(error);
@@ -89,6 +102,7 @@ class PostService {
 	}
 
 	async _fetchDataFromBucket (path) {
+		console.log(path);
 		const [ rawMeta, mdContent ] = await Promise.all([
 			fsExtra.readFile(`${ path }.json`, 'utf-8'),
 			fsExtra.readFile(`${ path }.md`, 'utf-8'),
@@ -108,7 +122,7 @@ class PostService {
 	}
 }
 
-const postService = new PostService();
-module.exports = postService;
+const contentService = new ContentService();
+module.exports = contentService;
 
 

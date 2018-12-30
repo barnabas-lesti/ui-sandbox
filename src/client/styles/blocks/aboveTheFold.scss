@@ -1,0 +1,33 @@
+.aboveTheFold {
+	$_overlayColor: rgba(0, 0, 0, .5);
+	$_textColor: #ffffff;
+
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 80vh;
+	position: relative;
+	text-align: center;
+	width: 100%;
+
+	&_content {
+		color: $_textColor;
+		left: 50%;
+		max-width: 80%;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 200;
+	}
+
+	&_overlay {
+		background-color: $_overlayColor;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 100;
+	}
+	
+}

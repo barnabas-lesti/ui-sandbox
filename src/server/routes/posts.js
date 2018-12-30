@@ -1,11 +1,11 @@
-const { postService } = require('../services');
+const { contentService } = require('../services');
 
 function posts (router) {
 	router.route('/posts')
 		.get(async (req, res) => {
 			const [ rootPostsData, postGroups ] = await Promise.all([
-				postService.getRootPostsData(),
-				postService.getPostGroups(),
+				contentService.getRootPostsData(),
+				contentService.getPostGroups(),
 			]);
 
 			if (rootPostsData !== null && postGroups !== null) {

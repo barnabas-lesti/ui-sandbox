@@ -1,1 +1,7 @@
-<h1>Home</h1>
+<main class="home">
+	{{> aboveTheFold model=model.content }}
+	<div class="container page">
+		<h2>Posts</h2>
+		{{> postGroups model=model.postGroups }}
+	</div>
+</main>
