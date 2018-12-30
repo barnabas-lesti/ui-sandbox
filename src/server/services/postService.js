@@ -10,7 +10,11 @@ class PostService {
 		const postDir = `${ POSTS_PATH }/${ postGroup }/${ postId }`;
 		try {
 			const post = await this._fetchDataFromBucket(`${ postDir }/${ postId }`);
-			return post;
+			return {
+				postGroup,
+				postId,
+				...post,
+			};
 		} catch (error) {
 			if (error.code !== 'ENOENT') {
 				logger.error(error);
@@ -26,7 +30,7 @@ class PostService {
 			const postIds = filesAndFolders.filter(item => !item.endsWith('.json') && !item.endsWith('.md'));
 			const postPromises = [];
 			for (const postId of postIds) {
-				postPromises.push(this._fetchDataFromBucket(`${ postGroupDir }/${ postId }/${ postId }`));
+				postPromises.push(this.getPost(postGroup, postId));
 			}
 			const posts = await Promise.all(postPromises);
 			return posts.length > 0 ? posts : null;
@@ -42,7 +46,40 @@ class PostService {
 		const postGroupDir = `${ POSTS_PATH }/${ postGroup }`;
 		try {
 			const postGroupData = await this._fetchDataFromBucket(`${ postGroupDir }/${ postGroup }`);
-			return postGroupData;
+			return {
+				postGroup,
+				...postGroupData,
+			};
+		} catch (error) {
+			if (error.code !== 'ENOENT') {
+				logger.error(error);
+			}
+			return null;
+		}
+	}
+
+	async getPostGroups () {
+		try {
+			const filesAndFolders = await fsExtra.readdir(POSTS_PATH);
+			const postGroupsIds = filesAndFolders.filter(item => !item.endsWith('.json') && !item.endsWith('.md'));
+			const postGroupPromises = [];
+			for (const postGroupId of postGroupsIds) {
+				postGroupPromises.push(this.getPostGroup(postGroupId));
+			}
+			const postGroups = (await Promise.all(postGroupPromises)).filter(postGroup => postGroup !== null);
+			return postGroups;
+		} catch (error) {
+			if (error.code !== 'ENOENT') {
+				logger.error(error);
+			}
+			return null;
+		}
+	}
+
+	async getRootPostsData () {
+		try {
+			const rootPostsMeta = await this._fetchDataFromBucket(`${ POSTS_PATH }/posts`);
+			return rootPostsMeta;
 		} catch (error) {
 			if (error.code !== 'ENOENT') {
 				logger.error(error);

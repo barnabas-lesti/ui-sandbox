@@ -1,12 +1,3 @@
 .posts {
-	text-align: center;
 
-	&_content {
-		margin-bottom: 1rem;
-		overflow: hidden;
-	}
-
-	@media screen and (min-width: $layout_mdMin) {
-		text-align: left;
-	}
 }
