@@ -1,0 +1,48 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+.box {
+	background-color: #00d1b2;
+	color: #ffffff;
+	border-radius: 2px;
+	text-align: center;
+	padding: 16px;
+	line-height: 1;
+}
+
+.container {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+.row {
+	margin: 8px -8px;
+}
+
+.row::after {
+	content: '';
+	clear: both;
+	display: table;
+}
+
+.column {
+	float: left;
+	box-sizing: border-box;
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+.two-in-a-row {
+	width: calc(100% / 2 - 16px);
+}
+
+.three-in-a-row {
+	width: calc(100% / 3 - 16px);
+}
+
+.four-in-a-row {
+	width: calc(100% / 4 - 16px);
+}
